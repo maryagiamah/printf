@@ -44,13 +44,22 @@ int _printf(const char *format, ...)
                                 fld_wdth = (*fmt_str - '0');
                                 fmt_str++;
                         }
-                        if(*fmt_str == '.')
+			else if(*fmt_str == '*')
+			{
+				fld_wdth = (var_arg(var_args, int) + '0');
+                                fmt_str++;
+			}
+                        if (*fmt_str == '.')
                         {
                                 fmt_str++;
                                 if (is_digit(*fmt_str))
 				{
                                         prec_sn = (*fmt_str - '0');
 					fmt_str++;
+				}
+				else if (*fmt_str == '*')
+				{
+					prec_sn = (var_arg(var_args, int) + '0');	
 				}
 				else
 					prec_sn = 0;
