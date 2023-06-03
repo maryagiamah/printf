@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 /**
  * print_padding - prints padding characters
  * @c: the character to print
@@ -6,11 +7,11 @@
  *
  * Return: number of characters printed
  */
-int print_padding(char c, int n)
+int print_padding (char c, int n)
 {
         int count = 0;
-
-        for (int i = 0; i < n; i++)
+	int i = 0;
+        for (i = 0; i < n; i++)
                 count += _putchar(c);
 
         return count;
@@ -20,7 +21,7 @@ int print_padding(char c, int n)
  * @n: the signed decimal number
  * Return: the number of digits
  */
-int count_signed_digits(long int n)
+int count_signed_digits (long int n)
 {
     int count = 0;
 
@@ -41,7 +42,7 @@ int count_signed_digits(long int n)
  * @n: the unsigned decimal number
  * Return: the number of digits
  */
-int count_unsigned_digits(unsigned long int n)
+int count_unsigned_digits (unsigned long int n)
 {
     int count = 0;
 
@@ -61,9 +62,9 @@ int count_unsigned_digits(unsigned long int n)
  * an integer and prints all its digits using recursion.
  * @n: integer to be printed
  */
-void print_number(long int n)
+void print_number (long int n)
 {
-	unsigned long int n1;
+	unsigned long int n1 = 0;
         if (n < 0) /* if n is less than zero , it coverted to positve numer but the sign is printed */
         {
                 n1 *= -n;
@@ -75,9 +76,9 @@ void print_number(long int n)
 
         _putchar ((n1 % 10) + '0');
 }
-int apply_width_precision(char *str, flags_t *f, int fld_wdth, int prec_sn, int  no_ofchar)
+int apply_width_precision (char *str, flags_t *f, int fld_wdth, int prec_sn, int  no_ofchar)
 {
-        int len = _strlen(str);
+        int len = strlen(str);
         int count = 0;
         int padding = ' ';
 
