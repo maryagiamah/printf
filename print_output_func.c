@@ -9,7 +9,7 @@
  * Description: _putchar uses a local buffer of 1024 to call write
  * as little as possible
  */
-int _putchar(char c)
+int _putchar (char c)
 {
         static char buf[1024];
         static int i;;
@@ -32,7 +32,7 @@ int _putchar(char c)
  * @str: pointer to the string to print
  * Return: number of chars written
  */
-int _puts(char *str)
+int _puts (char *str)
 {
         register int i;
 
