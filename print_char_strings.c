@@ -30,7 +30,7 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 }
                 return prec_sn;
         }
-	else if (!s)
+	if (!s)
                 s = "(null)";
 
         return (_puts(s));
