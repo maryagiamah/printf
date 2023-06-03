@@ -30,8 +30,7 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 }
                 return prec_sn;
         }
-
-        if (!s)
+	else if (!s)
                 s = "(null)";
 
         return (_puts(s));
@@ -53,8 +52,10 @@ int print_char (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         (void)m;
         (void)fld_wdth;
         (void)prec_sn;
-
-        _putchar(va_arg(l, int));
+	char *c  = va_arg(l, int);
+	if (!c)
+		return (0);
+        _putchar(c);
         return (1);
 }
 
