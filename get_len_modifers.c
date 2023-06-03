@@ -1,27 +1,11 @@
 #include "main.h"
 
 
-
-
-
-
-
-
-
-
 int get_mod(char s, len_mod *m)
 {
 
         int bool_flag  = 0;
-
-        if (s == 'l' && m->l == 1)
-        {
-                m->ll = 1;
-                m->l = 0;
-                bool_flag = 1;
-                return (bool_flag);
-        }
-        else if (s == 'h' && m->h == 1)
+        if (s == 'h' && m->h == 1)
         {
                 m->hh = 1;
                 m->h = 0;
@@ -48,10 +32,6 @@ int get_mod(char s, len_mod *m)
                         break;
                 case 'z':
                         m->z = 1;
-                        bool_flag = 1;
-                        break;
-                case 'q':
-                        m->q = 1;
                         bool_flag = 1;
                         break;
 
