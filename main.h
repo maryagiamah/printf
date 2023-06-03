@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
 #include <stdlib.h>
 #include <stdarg.h>
@@ -17,7 +17,6 @@ typedef struct flags
         int hash;
         int zero_flag;
         int dash_flag;
-        sep_flag *s;
 } flags_t;
 
 typedef struct len_modifiers
@@ -25,21 +24,10 @@ typedef struct len_modifiers
         int h;
         int hh;
         int l;
-        int ll;
         int j;
         int t;
         int z;
-        int q;
 } len_mod;
-
-typedef struct separation_flags
-{
-        int comma;
-        int sem_colon;
-        int colon;
-        int und_score;
-} sep_flag;
-
 /**
  * struct printHandler - struct to choose the right function depending
  * on the format specifier passed to _printf()
@@ -55,7 +43,6 @@ typedef struct printHandler
 /* print_nums */
 int print_int(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
 int print_unsigned(va_list l, flags_t *f,len_mod *m, int fld_wdth, int prec_sn);
-int count_digit(int i);
 
 /* print_bases */
 int print_hex(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
@@ -78,7 +65,7 @@ int get_flag(char s, flags_t *f);
 /* print_alpha */
 int print_string(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
 int print_char(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
-
+int print_n (va_list l, int count);
 /* write_funcs */
 int _putchar(char c);
 int _puts(char *str);
@@ -106,7 +93,11 @@ int print_lo(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
 int print_lu(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
 
 /* helper functions */
-int apply_width_precision_2(long int, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar);
+int apply_width_precision_2(long int n, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar);
 int apply_width_precision(char *str, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar);
 void print_number(long int n);
+int print_padding(char c, int n);
+int count_signed_digits(long int n);
+int count_unsigned_digits(unsigned long int n);
+void initialize_variables(flags_t *flags, len_mod *mod_f);
 #endif
