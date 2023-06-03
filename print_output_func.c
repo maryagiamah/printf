@@ -12,7 +12,7 @@
 int _putchar (char c)
 {
         static char buf[1024];
-        static int i;;
+        static int i;
 
         if (c == -1 || i >= 1024)
         {

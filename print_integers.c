@@ -8,7 +8,7 @@
  */
 int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
-    int long n;
+    long int n;
     int res = 0;
     if (m->l == 1)
         n = va_arg(l, long int);

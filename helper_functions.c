@@ -64,17 +64,19 @@ int count_unsigned_digits (unsigned long int n)
  */
 void print_number (long int n)
 {
-	unsigned long int n1 = 0;
-        if (n < 0) /* if n is less than zero , it coverted to positve numer but the sign is printed */
+	  unsigned long int n1 = 0;
+
+        if (n < 0)
         {
-                n1 *= -n;
                 _putchar('-');
+                n1 = -n;
         }
+        else
+                n1 = n;
 
-        if (n1 / 10) /*base case for recursive call to check if the number is not  zero when divided by ten */
+        if (n1 / 10)
                 print_number(n1 / 10);
-
-        _putchar ((n1 % 10) + '0');
+        _putchar((n1 % 10) + '0');
 }
 int apply_width_precision (char *str, flags_t *f, int fld_wdth, int prec_sn, int  no_ofchar)
 {
