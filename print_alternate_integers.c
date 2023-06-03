@@ -10,7 +10,7 @@
  *
  * Return: number of characters printed
  */
-int print_hex(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         unsigned long  int num;
         char *str;
@@ -28,7 +28,7 @@ int print_hex(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-	count = count_unsigned_integers(num);
+	count = count_unsigned_digits(num);
 
         str = convert(num, 16, 1);
 	 if (f->plus == 1 && f-> space == 0)
@@ -52,7 +52,7 @@ int print_hex(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_hex_big(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_hex_big (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         unsigned long int num;
         char *str;
@@ -70,7 +70,7 @@ int print_hex_big(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-	count = count_unsigned_integers(num);
+	count = count_unsigned_digits(num);
         str = convert(num, 16, 0);
 	if (f->plus == 1 && f-> space == 0)
                 count += _putchar('+');
@@ -94,7 +94,7 @@ int print_hex_big(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_binary(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_binary (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         unsigned long int num;
         char *str;
@@ -112,7 +112,7 @@ int print_binary(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-	count = count_unsigned_integers(num);
+	count = count_unsigned_digits(num);
         str = convert(num, 2, 0);
 	if (f->plus == 1 && f-> space == 0)
                 count += _putchar('+');
@@ -132,7 +132,7 @@ int print_binary(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_octal(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_octal (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         unsigned long int num;
         char *str;
@@ -150,7 +150,7 @@ int print_octal(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-	count = count_unsigned_integers(num);
+	count = count_unsigned_digits(num);
         str = convert(num, 8, 0);
 	if (f->plus == 1 && f-> space == 0)
                 count += _putchar('+');
