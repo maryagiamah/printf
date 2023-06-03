@@ -34,13 +34,13 @@ int is_digit(char c)
 return (0);
 }
 
-int apply_width_precision_2(long long int, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar)
+int apply_width_precision_2 (long int n, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar)
 {
-        int dig_len = count_signed_digits(n);;
+        int dig_len = count_signed_digits(n);
         int count = 0;
         int padding = ' ';
 
-        if (prec_sn != -1 && prec_sn > len)
+        if (prec_sn != -1 && prec_sn > dig_len)
             count += print_padding('0', prec_sn - dig_len);
         else if (f->zero_flag == 1 && f->dash_flag != 1 && prec_sn == -1)
             padding = '0';
@@ -59,4 +59,25 @@ int apply_width_precision_2(long long int, flags_t *f, int fld_wdth, int prec_sn
         return (count);
 
 }
+#include "main.h"
+#include <limits.h>
+#include <stdio.h>
 
+/**
+ * Initialize flags and mod_f variables.
+ */
+void initialize_variables(flags_t *flags, len_mod *mod_f)
+{
+    flags->plus = 0;
+    flags->space = 0;
+    flags->hash = 0;
+    flags->zero_flag = 0;
+    flags->dash_flag = 0;
+
+    mod_f->h = 0;
+    mod_f->l = 0;
+    mod_f->hh = 0;
+    mod_f->j = 0;
+    mod_f->z = 0;
+    mod_f->t = 0;
+}
