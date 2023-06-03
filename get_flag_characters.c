@@ -34,20 +34,6 @@ int get_flag(char s, flags_t *f)
                         f->dash_flag = 1;
                         i = 1;
                         break;
-                case ',':
-                        f->(*s).comma = 1;
-                        i = 1;
-                        break;
-                case ';':
-                        f->(*s).sem_colon = 1;
-                case ':':
-                        f->(*s).colon = 1;
-                        i = 1;
-                        break;
-                case ',':
-                        f->(*s).und_score = 1
-                        i = 1;
-                        break;
                 default:
                         break;
 
