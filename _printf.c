@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
                         }
 			else if(*fmt_str == '*')
 			{
-				fld_wdth = (var_arg(var_args, int) + '0');
+				fld_wdth = var_arg(var_args, int) + '0';
                                 fmt_str++;
 			}
                         if (*fmt_str == '.')
@@ -59,7 +59,7 @@ int _printf(const char *format, ...)
 				}
 				else if (*fmt_str == '*')
 				{
-					prec_sn = (var_arg(var_args, int) + '0');	
+					prec_sn = var_arg(var_args, int) + '0';	
 				}
 				else
 					prec_sn = 0;
