@@ -7,7 +7,7 @@
  * if a flag is passed to _printf
  * Return: number of char printed
  */
-int print_address(va_list l, flags_t *f, len mod *m, int fld_wdth, int pre_csn)
+int print_address (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         char *str;
         unsigned long int p = va_arg(l, unsigned long int);
@@ -17,7 +17,7 @@ int print_address(va_list l, flags_t *f, len mod *m, int fld_wdth, int pre_csn)
         (void)f;
 	(void) m;
 	(void) fld_wdth;
-	(void) pre_csn
+	(void) prec_sn;
         if (!p)
                 return (_puts("(nil)"));
         str = convert(p, 16, 1);
