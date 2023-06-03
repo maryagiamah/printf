@@ -12,7 +12,7 @@
  *
  * Return: number of characters printed
  */
-int print_bigS(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_bigS (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         int i, count = 0;
         char *res;
@@ -54,7 +54,7 @@ int print_bigS(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_rev(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_rev (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         int i = 0;
         char *s = va_arg(l, char *);
@@ -88,15 +88,16 @@ int print_rev(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_rot13(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_rot13 (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
-        char *s = va_arg(l, char *);
+        char *s = va_arg(l, char *), *ptr;
+	int i;
         (void)f;
         (void)m;
         (void)fld_wdth;
         (void)prec_sn;
-	char *ptr = s;
-	int i = 0;
+	ptr = s;
+	i = 0;
 
         while (*ptr)
         {
@@ -135,7 +136,7 @@ int print_rot13(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_percent(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_percent (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         (void)l;
         (void)f;
@@ -145,4 +146,3 @@ int print_percent(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 
         return (_putchar('%'));
 }
-
