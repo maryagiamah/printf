@@ -6,10 +6,10 @@
  * if a flag is passed to _printf
  * Return: number of characters printed
  */
-int print_int(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
     int long n;
-
+    int res = 0;
     if (m->l == 1)
         n = va_arg(l, long int);
     else if (m->h == 1)
@@ -19,21 +19,21 @@ int print_int(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
     else
         n = va_arg(l, int);
 
-    int res = count_signed_digits(n);
-    int dig_len = res;
+    res = count_signed_digits(n);
 	if (n < 0)
 		res += 1;
 
     if (prec_sn == 0)
     {
-	print_number(n = 0);
+	n = 0;
+	print_number(n);
         return 1;
     }
     if (f->space == 1 && f->plus == 0 && n >= 0)
         res += _putchar(' ');
     else if (f->plus == 1 && n >= 0)
         res += _putchar('+');
-    res += apply_width_precision_2(n, f, fld_wdth, pre_csn, res);
+    res += apply_width_precision_2(n, f, fld_wdth, prec_sn, res);
     return (res);
 }
 
@@ -44,10 +44,11 @@ int print_int(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  * if a flag is passed to _printf
  * Return: number of characters printed
  */
-int print_unsigned(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_unsigned (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
     unsigned long int u;
-
+    int res = 0;
+    char *str;
     if (m->l == 1)
         u = va_arg(l, unsigned long int);
     else if (m->h == 1)
@@ -57,12 +58,12 @@ int print_unsigned(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
     else
         u = va_arg(l, unsigned int);
 
-    int res = count_unsigned_digits(u);
-    char *str = convert(u, 10,1)
+    res = count_unsigned_digits(u);
+    str = convert(u, 10,1);
 
-    if (pre_csn == 0)
+    if (prec_sn == 0)
     {
-	n = 0;
+	u = 0;
 	return 1;
     }
     if (f->plus == 1 && f-> space == 0)
