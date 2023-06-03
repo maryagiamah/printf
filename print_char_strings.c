@@ -11,7 +11,7 @@
  *
  * Return: number of characters printed
  */
-int print_string(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         char *s = va_arg(l, char *);
         char *ptr = s;
@@ -47,7 +47,7 @@ int print_string(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_char(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_char (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         (void)f;
         (void)m;
@@ -68,13 +68,9 @@ int print_char(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_n(int count)
+int print_n (va_list l, int count)
 {
         int *ptr = va_arg(l, int *);
-        (void)f;
-        (void)m;
-        (void)fld_wdth;
-        (void)prec_sn;
 
         *ptr = count;
         return (0);
