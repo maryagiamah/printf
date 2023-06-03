@@ -21,7 +21,11 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         (void)m;
         (void)fld_wdth;
 
+<<<<<<< HEAD
         if (prec_sn > 0 && prec_sn < str_len && s)
+=======
+        if (prec_sn >= 0 && prec_sn < str_len && s)
+>>>>>>> 1ce1817 (trying to debug)
         {
                 while (i < prec_sn && *ptr != '\0')
                 {
