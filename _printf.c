@@ -5,7 +5,6 @@
 
 int _printf(const char *format, ...)
 {
-<<<<<<< HEAD
     int (*print_func)(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
     const char *fmt_str;
     va_list var_args;
@@ -13,15 +12,7 @@ int _printf(const char *format, ...)
     flags_t flags;
     len_mod mod_f;
     va_start(var_args, format);
-=======
-	va_list var_args;
-        int (*print_func)(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
-        const char *fmt_str;
-        int count = 0, fld_wdth = 0, prec_sn = -1;
-	flags_t flags;
-        len_mod mod_f;
-        va_start(var_args, format);
->>>>>>> 1ce1817 (trying to debug)
+
 
     if (!format || (format[0] == '%' && !format[1]))
         return (-1);
@@ -56,19 +47,24 @@ int _printf(const char *format, ...)
                 fmt_str++;
                 if (is_digit(*fmt_str))
                 {
-<<<<<<< HEAD
+
                     prec_sn = (*fmt_str - '0');
                     fmt_str++;
                 }
                 else if (*fmt_str == '*')
                 {
                     prec_sn = va_arg(var_args, int);
+		    fmt_str++;
                 }
                 else
+		{
                     prec_sn = 0;
+		}
             }
             while (get_mod(*fmt_str, &mod_f))
+	    {
                 fmt_str++;
+	    }
             if (*fmt_str == 'n')
             {
                 print_n(var_args, count);
@@ -78,58 +74,12 @@ int _printf(const char *format, ...)
             count += (print_func)
                          ? print_func(var_args, &flags, &mod_f, fld_wdth, prec_sn)
                          : print_unknown_specifier(*fmt_str);
-=======
-                        fmt_str++;
-                        if (*fmt_str == '%')
-                        {
-                                count += _putchar('%');
-                                continue;
-                        }
-                        while (get_flag(*fmt_str, &flags))
-                                fmt_str++;
-                        if (is_digit(*fmt_str))
-                        {
-
-                                fld_wdth = (*fmt_str - '0');
-                                fmt_str++;
-                        }
-			else if(*fmt_str == '*')
-			{
-				fld_wdth = va_arg(var_args, int);
-                                fmt_str++;
-			}
-                        if (*fmt_str == '.')
-                        {
-                                fmt_str++;
-                                if (is_digit(*fmt_str))
-				{
-                                        prec_sn = (*fmt_str - '0');
-					fmt_str++;
-				}
-				else if (*fmt_str == '*')
-				{
-					prec_sn = va_arg(var_args,  int);	
-				}
-				else
-					prec_sn = 0;
-                        }
-                        while (get_mod(*fmt_str, &mod_f))
-                                fmt_str++;
-			if(*fmt_str == 'n')
-			{
-				 print_n(var_args, count);
-				continue;
-			}
-                        print_func = get_print(*fmt_str);
-                        count += (print_func)
-                                ? print_func(var_args, &flags, &mod_f, fld_wdth, prec_sn)
-                                : print_unknown_specifier(*fmt_str);
-                } else
-                        count += _putchar(*fmt_str);
->>>>>>> 1ce1817 (trying to debug)
         }
         else
+	{
             count += _putchar(*fmt_str);
+	
+	}
     }
     _putchar(-1);
     va_end(var_args);

@@ -102,5 +102,5 @@ int count_unsigned_digits(unsigned long int n);
 void initialize_variables(flags_t *flags, len_mod *mod_f);
 
 /* print_unknown_specifier */
-int print_unknown_specifier (char specifier);
+int print_unknown_specifier (int specifier);
 #endif
