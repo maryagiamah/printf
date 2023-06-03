@@ -15,18 +15,19 @@ int _printf(const char *format, ...)
         int (*print_func)(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
         const char *fmt_str;
         va_list var_args;
-        register int count = 0;
-
+        int count = 0, fld_wdth = 0, prec_sn = -1;
+	flags_t flags;
+        len_mod mod_f;
         va_start(var_args, format);
+
         if (!format || (format[0] == '%' && !format[1]))
                 return (-1);
         if (format[0] == '%' && format[1] == ' ' && !format[2])
                 return (-1);
         for (fmt_str = format; *fmt_str; fmt_str++)
         {
-                flags_t flags = {0, 0, 0, 0, 0, 0};
-                len_mod mod_f = {0, 0, 0, 0, 0, 0};
-                int fld_wdth = -1, prec_sn = -1;
+		initialize_variables(&flags, &mod_f);
+                fld_wdth = 0, prec_sn = -1;
                 if (*fmt_str == '%')
                 {
                         fmt_str++;
@@ -52,24 +53,24 @@ int _printf(const char *format, ...)
 					fmt_str++;
 				}
 				else
-					pre_csn = 0;
+					prec_sn = 0;
                         }
                         while (get_mod(*fmt_str, &mod_f))
                                 fmt_str++;
 			if(*fmt_str == 'n')
 			{
-				count += print_n(count);
+				 print_n(var_args, count);
 				continue;
 			}
                         print_func = get_print(*fmt_str);
                         count += (print_func)
-                                ? print_func(var_args, &flags, &mod_f, fld_wdth, pre_csn);
+                                ? print_func(var_args, &flags, &mod_f, fld_wdth, prec_sn)
                                 : _printf("%%%c", *fmt_str);
                 } else
                         count += _putchar(*fmt_str);
         }
         _putchar(-1);
-        va_end(arguments);
+        va_end(var_args);
         return (count);
 
 }
