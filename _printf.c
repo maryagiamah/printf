@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
                         print_func = get_print(*fmt_str);
                         count += (print_func)
                                 ? print_func(var_args, &flags, &mod_f, fld_wdth, prec_sn)
-                                : _printf("%%%c", *fmt_str);
+                                : print_unknown_specifier(*fmt_str);
                 } else
                         count += _putchar(*fmt_str);
         }
