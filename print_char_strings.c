@@ -54,8 +54,6 @@ int print_char (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         (void)fld_wdth;
         (void)prec_sn;
 	c = va_arg(l, int);
-	if (!c)
-		return (0);
         _putchar(c);
         return (1);
 }
