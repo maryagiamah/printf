@@ -30,11 +30,16 @@ int _printf(const char *format, ...)
                 count += _putchar('%');
                 continue;
             }
+	    if (*fmt_str == 'n')
+            {
+                print_n(var_args, count);
+                continue;
+            }
             while (get_flag(*fmt_str, &flags))
                 fmt_str++;
             if (is_digit(*fmt_str))
             {
-                fld_wdth = (*fmt_str - '0');
+                fld_wdth = ((*fmt_str) - '0');
                 fmt_str++;
             }
             else if (*fmt_str == '*')
@@ -48,7 +53,7 @@ int _printf(const char *format, ...)
                 if (is_digit(*fmt_str))
                 {
 
-                    prec_sn = (*fmt_str - '0');
+                    prec_sn = ((*fmt_str) - '0');
                     fmt_str++;
                 }
                 else if (*fmt_str == '*')
@@ -65,21 +70,13 @@ int _printf(const char *format, ...)
 	    {
                 fmt_str++;
 	    }
-            if (*fmt_str == 'n')
-            {
-                print_n(var_args, count);
-                continue;
-            }
             print_func = get_print(*fmt_str);
             count += (print_func)
                          ? print_func(var_args, &flags, &mod_f, fld_wdth, prec_sn)
                          : print_unknown_specifier(*fmt_str);
         }
         else
-	{
-            count += _putchar(*fmt_str);
-	
-	}
+            count += _putchar(*fmt_str);	
     }
     _putchar(-1);
     va_end(var_args);
