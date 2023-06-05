@@ -8,7 +8,7 @@ int _printf(const char *format, ...)
     int (*print_func)(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
     const char *fmt_str;
     va_list var_args;
-    int count = 0, fld_wdth = 0, prec_sn = -1;
+    int count = 0, fld_wdth = 0, prec_sn = 1;
     flags_t flags;
     len_mod mod_f;
     va_start(var_args, format);
@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
     for (fmt_str = format; *fmt_str; fmt_str++)
     {
         initialize_variables(&flags, &mod_f);
-        fld_wdth = 0, prec_sn = -1;
+        fld_wdth = 0, prec_sn = 1;
         if (*fmt_str == '%')
         {
             fmt_str++;
@@ -47,6 +47,11 @@ int _printf(const char *format, ...)
                 fld_wdth = va_arg(var_args, int);
                 fmt_str++;
             }
+          if (fld_wdth < 0)
+          {
+               fld_wdth *= -1;
+		  flags.dash_flag = 1;
+	  }
             if (*fmt_str == '.')
             {
                 fmt_str++;
