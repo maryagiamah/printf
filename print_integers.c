@@ -25,9 +25,7 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 
     if (prec_sn == 0)
     {
-	n = 0;
-	print_number(n);
-        return 1;
+        return (0);
     }
     if (f->space == 1 && f->plus == 0 && n >= 0)
         res += _putchar(' ');
@@ -66,10 +64,10 @@ int print_unsigned (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn
 	u = 0;
 	return 1;
     }
-    if (f->plus == 1 && f-> space == 0)
-            res += _putchar('+');
-    else if (f->space == 1)
-            res  += _putchar(' ');
+    if (f->space == 1 && f->plus == 0)
+            res += _putchar(' ');
+    else if (f->plus == 1)
+            res  += _putchar('+');
     res += apply_width_precision(str , f,  fld_wdth, prec_sn, res);
     return (res);
 }
