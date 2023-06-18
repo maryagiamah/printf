@@ -22,19 +22,6 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         	n = va_arg(l, int);
 
 	count += count_signed_digits(n);
-
-<<<<<<< HEAD
-    if (prec_sn == 0)
-    {
-        return (0);
-    }
-    if (f->space == 1 && f->plus == 0 && n >= 0)
-        res += _putchar(' ');
-    else if (f->plus == 1 && n >= 0)
-        res += _putchar('+');
-    res += apply_width_precision_2(n, f, fld_wdth, prec_sn, res);
-    return (res);
-=======
 	if (n < 0)
 		count += 1;
     	if (f->space == 1 && f->plus == 0  && n >= 0)
@@ -44,7 +31,6 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		res += count;
 	count += apply_width_precision_2(n, f, fld_wdth, prec_sn, res);
 	return (count);
->>>>>>> 0b3e73c (trying to debug)
 }
 
 /**
@@ -71,24 +57,10 @@ int print_unsigned (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn
 	str = convert(u, 10, 1);
 	count = _strlen(str);
 
-<<<<<<< HEAD
-    if (prec_sn == 0)
-    {
-	u = 0;
-	return 1;
-    }
-    if (f->space == 1 && f->plus == 0)
-            res += _putchar(' ');
-    else if (f->plus == 1)
-            res  += _putchar('+');
-    res += apply_width_precision(str , f,  fld_wdth, prec_sn, res);
-    return (res);
-=======
 	if (f->space == 1 && f->plus == 0 && u >= 0)
 		count += _putchar(' ');
 	else if (f->plus  == 1 && u >= 0)
 		count  += _putchar('+');
 	count += apply_width_precision(str, f,  fld_wdth, prec_sn, count);
     return (count);
->>>>>>> 0b3e73c (trying to debug)
 }
