@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stddef.h>
 /**
  * get_print - selects the right printing function
  * depending on the conversion specifier passed to _printf
@@ -12,6 +12,7 @@
  */
 int (*get_print(char s))(va_list, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
+	int (*ptr)(va_list, flags_t *f, len_mod *m, int fld_wdth, int prec_sn) = NULL;
 
         ph func_arr[] = {
                 {'i', print_int},
@@ -27,14 +28,16 @@ int (*get_print(char s))(va_list, flags_t *f, len_mod *m, int fld_wdth, int prec
                 {'r', print_rev},
                 {'S', print_bigS},
                 {'p', print_address},
-                {'%', print_percent},
+                {'%', print_percent} 
                 };
         int flags = 14;
 
-        register int i;
+        register int i = 0;
 
         for (i = 0; i < flags; i++)
+	{
                 if (func_arr[i].c == s)
                         return (func_arr[i].f);
-        return (0);
+        }
+        return (ptr);
 }

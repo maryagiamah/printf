@@ -1,6 +1,6 @@
 #include "main.h"
 #include <string.h>
-/**
+/**:w
  * print_padding - prints padding characters
  * @c: the character to print
  * @n: the number of times to print the character
@@ -64,7 +64,7 @@ int count_unsigned_digits (unsigned long int n)
  */
 void print_number (long int n)
 {
-	  unsigned long int n1 = 0;
+	  long int n1 = 0;
 
         if (n < 0)
         {
@@ -75,39 +75,47 @@ void print_number (long int n)
                 n1 = n;
 
         if (n1 / 10)
+	{
                 print_number(n1 / 10);
-        _putchar((n1 % 10) + '0');
+	}
+        _putchar ((n1 % 10) + '0');
 }
+
 int apply_width_precision (char *str, flags_t *f, int fld_wdth, int prec_sn, int  no_ofchar)
 {
-        int len = strlen(str);
+        int len = _strlen(str);
         int count = 0;
         int padding = ' ';
 
+	if (prec_sn > 1)
+		f->zero_flag = 0;
+	if (f->zero_flag == 1 && f->dash_flag != 1)
+            padding = '0';
         if (prec_sn > 0 && prec_sn > len)
             count += print_padding('0', prec_sn - len);
-        else if (f->zero_flag == 1 && f->dash_flag != 1 && prec_sn == -1)
-            padding = '0';
 
         no_ofchar += count;
-	if (fld_wdth > 0)
-	{
+
         if (fld_wdth > no_ofchar  && f->dash_flag != 1 && f->zero_flag == 1)
 	{
-            count += print_padding(padding, fld_wdth - no_ofchar);
-		_puts(str);
-        	return (count);
+		count += print_padding(padding, fld_wdth - no_ofchar);
+		 _puts(str);
+		return (count);
 	}
-	if (fld_wdth > no_ofchar  && f->dash_flag != 1 && f->zero_flag == 0)
+	if (fld_wdth > no_ofchar && f->dash_flag == 0  && f->zero_flag == 0)
         {
-            count += print_padding(padding, fld_wdth - no_ofchar);
+		count += print_padding(padding, fld_wdth - no_ofchar);
 		_puts(str);
                 return (count);
         }
-        no_ofchar += count;
         if (fld_wdth > no_ofchar  && f->dash_flag == 1)
-            count += print_padding(padding, fld_wdth - no_ofchar);
+	{
+		_puts(str);
+		count += print_padding(padding, fld_wdth - no_ofchar);
 	}
-	_puts(str);
+	if (count == 0)
+	{
+		_puts(str);
+	}	
         return (count);
 }

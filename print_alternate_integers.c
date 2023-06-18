@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stddef.h>
+#include <string.h>
 /**
  * print_hex - prints a number in hexadecimal base, in lowercase
  * @l: the va_list containing the number to print
@@ -12,12 +12,12 @@
  */
 int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
-        unsigned long  int num;
-        char *str;
-        int count;
+	unsigned long  int num;
+	char *str;
+        int count = 0;
 
         if (m->l == 1)
-                num = va_arg(l, unsigned long);
+        	num = va_arg(l, unsigned long);
         else if (m->h == 1)
                 num = (unsigned short)va_arg(l, unsigned int);
         else if (m->hh == 1)
@@ -26,14 +26,15 @@ int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-	count = count_unsigned_digits(num);
 
         str = convert(num, 16, 1);
-	 if (f->plus == 1 && f-> space == 0)
-         	count += _putchar('+');
-         else if (f->space == 1)
-            	count += _putchar(' ');
-         if (f->hash == 1 && str[0] != '0')
+	count += _strlen (str);
+
+	if (f->space == 1 && f->plus  == 0)
+         	count += _putchar(' ');
+	else if (f->plus == 1)
+            	count += _putchar('+');
+	if (f->hash == 1 && str[0] != '\0')
                 count += _puts("0x");
 
         count += apply_width_precision(str, f, fld_wdth, prec_sn, count);
@@ -66,14 +67,16 @@ int print_hex_big (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-	count = count_unsigned_digits(num);
+
         str = convert(num, 16, 0);
-	if (f->plus == 1 && f-> space == 0)
-                count += _putchar('+');
-        else if (f->space == 1)
+	count += _strlen(str);
+
+	if (f->space == 1 && f->plus  == 0)
                 count += _putchar(' ');
+        else if (f->plus == 1)
+                count += _putchar('+');
         
-        if (f->hash == 1 && str[0] != '0')
+        if (f->hash == 1 && str[0] != '\0')
                 count += _puts("0X");
 
         count += apply_width_precision(str, f, fld_wdth, prec_sn, count);
@@ -106,12 +109,16 @@ int print_binary (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-	count = count_unsigned_digits(num);
-        str = convert(num, 2, 0);
-	if (f->plus == 1 && f-> space == 0)
-                count += _putchar('+');
-        else if (f->space == 1)
+
+        str = convert(num, 2, 1);
+	count += _strlen(str);
+
+	if (f->space == 1 && f->plus  == 0)
                 count += _putchar(' ');
+        else if (f->plus == 1)
+                count += _putchar('+');
+	if (f->hash == 1 && str[0] != '\0')
+                count += _puts("ob");
         count += apply_width_precision(str, f, fld_wdth, prec_sn, count);
         return count;
 }
@@ -142,8 +149,10 @@ int print_octal (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-	count = count_unsigned_digits(num);
-        str = convert(num, 8, 0);
+
+        str = convert(num, 8, 1);
+	count += _strlen(str);
+
 	if (f->plus == 1 && f-> space == 0)
                 count += _putchar('+');
         else if (f->space == 1)

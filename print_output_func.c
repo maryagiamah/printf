@@ -14,13 +14,13 @@ int _putchar (char c)
         static char buf[1024];
         static int i;
 
-        if (c == -1 || i == 1024)
+        if (c == -1 || i >= 1024)
         {
-                write(1, &buf, i);
+                write(1, buf, i);
                 i = 0;
         }
         if (c != -1)
-        {
+       {
                 buf[i] = c;
                 i++;
         }
@@ -32,11 +32,15 @@ int _putchar (char c)
  * @str: pointer to the string to print
  * Return: number of chars written
  */
-int _puts (char *str)
+int _puts(char *str)
 {
-        register int i;
+        register int i = 0;
+	char *ptr = str;
 
-        for (i = 0; str[i] != '\0'; i++)
-                _putchar(str[i]);
-        return (i);
+	while (*ptr)
+	{
+		_putchar(*ptr++);
+		i++;
+	}
+	return (i);
 }

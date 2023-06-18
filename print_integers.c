@@ -8,21 +8,22 @@
  */
 int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
-    long int n;
-    int res = 0;
-    if (m->l == 1)
-        n = va_arg(l, long int);
-    else if (m->h == 1)
-        n = (short int) va_arg(l, int);
-    else if (m->hh == 1)
-        n = (signed char) va_arg(l, int);
-    else
-        n = va_arg(l, int);
+	long int n = 0;
+	int  count = 0;
+	int res = 0;	
 
-    res = count_signed_digits(n);
-	if (n < 0)
-		res += 1;
+	if (m->l == 1)
+        	n = va_arg(l, long int);
+	else if (m->h == 1)
+        	n = (short int) va_arg(l, int);
+	else if (m->hh == 1)
+        	n = (signed char) va_arg(l, int);
+	else
+        	n = va_arg(l, int);
 
+	count += count_signed_digits(n);
+
+<<<<<<< HEAD
     if (prec_sn == 0)
     {
         return (0);
@@ -33,6 +34,17 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         res += _putchar('+');
     res += apply_width_precision_2(n, f, fld_wdth, prec_sn, res);
     return (res);
+=======
+	if (n < 0)
+		count += 1;
+    	if (f->space == 1 && f->plus == 0  && n >= 0)
+        	count  += _putchar(' ');
+    	else if (f->plus == 1 &&  n >= 0)
+		count += _putchar('+');
+		res += count;
+	count += apply_width_precision_2(n, f, fld_wdth, prec_sn, res);
+	return (count);
+>>>>>>> 0b3e73c (trying to debug)
 }
 
 /**
@@ -44,21 +56,22 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  */
 int print_unsigned (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
-    unsigned long int u;
-    int res = 0;
-    char *str;
-    if (m->l == 1)
-        u = va_arg(l, unsigned long int);
-    else if (m->h == 1)
-        u = (unsigned short int) va_arg(l, unsigned int);
-    else if (m->hh == 1)
-        u = (unsigned char) va_arg(l, unsigned int);
-    else
-        u = va_arg(l, unsigned int);
+	unsigned long int u = 0;
+ 	int count = 0;
+	char *str;
+	if (m->l == 1)
+       		 u = va_arg(l, unsigned long int);
+	else if (m->h == 1)
+        	u = (unsigned short int) va_arg(l, unsigned int);
+	else if (m->hh == 1)
+        	u = (unsigned char) va_arg(l, unsigned int);
+	else
+        	u = va_arg(l, unsigned int);
 
-    res = count_unsigned_digits(u);
-    str = convert(u, 10,1);
+	str = convert(u, 10, 1);
+	count = _strlen(str);
 
+<<<<<<< HEAD
     if (prec_sn == 0)
     {
 	u = 0;
@@ -70,4 +83,12 @@ int print_unsigned (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn
             res  += _putchar('+');
     res += apply_width_precision(str , f,  fld_wdth, prec_sn, res);
     return (res);
+=======
+	if (f->space == 1 && f->plus == 0 && u >= 0)
+		count += _putchar(' ');
+	else if (f->plus  == 1 && u >= 0)
+		count  += _putchar('+');
+	count += apply_width_precision(str, f,  fld_wdth, prec_sn, count);
+    return (count);
+>>>>>>> 0b3e73c (trying to debug)
 }

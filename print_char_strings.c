@@ -15,23 +15,23 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         char *s = va_arg(l, char *);
         char *ptr = s;
-        int str_len = strlen(s);
+        int str_len = _strlen(s);
         int i = 0;
 	(void)f;
         (void)m;
         (void)fld_wdth;
 
-        if (prec_sn >= 0 && prec_sn < str_len && s)
+	if (!s)
+                return (_puts("(null)"));
+        if (prec_sn > 1  && prec_sn < str_len)
         {
                 while (i < prec_sn && *ptr != '\0')
                 {
-                        _putchar(*ptr++);
+                        _putchar(*ptr);
                         i++;
                 }
                 return prec_sn;
         }
-	if (!s)
-                s = "(null)";
 
         return (_puts(s));
 }
@@ -53,6 +53,7 @@ int print_char (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         (void)m;
         (void)fld_wdth;
         (void)prec_sn;
+
 	c = va_arg(l, int);
         _putchar(c);
         return (1);

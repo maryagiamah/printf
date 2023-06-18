@@ -56,7 +56,7 @@ int print_bigS (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  */
 int print_rev (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
-        int i = 0;
+        int i = 0, j = 0, k = 0;
         char *s = va_arg(l, char *);
 	char *ptr = s;
 
@@ -65,15 +65,23 @@ int print_rev (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         (void)fld_wdth;
         (void)prec_sn;
 
+	while (*ptr)
+	{
+		k++;
+		ptr++;
+	}
+
         if (!s)
 	{
                 s = "(null)";
-		_puts(s);
+		i += _puts(s);
+		return(i);
 	}
-        while (*ptr)
+	ptr--;
+        while (j < k)
 	{
-                _putchar(*ptr++);
-		i++;
+                i += _putchar(*ptr--);
+		j++;
 	}
         return (i);
 }
@@ -91,7 +99,7 @@ int print_rev (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 int print_rot13 (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         char *s = va_arg(l, char *), *ptr;
-	int i;
+	int i;;
         (void)f;
         (void)m;
         (void)fld_wdth;
@@ -107,19 +115,19 @@ int print_rot13 (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                                 *ptr += 13;
                         else
                                 *ptr -= 13;
+			i += _putchar(*ptr);
 
                 }
-
-                if (*ptr >= 'A' && *ptr <= 'Z')
+                else if (*ptr >= 'A' && *ptr <= 'Z')
                 {
                         if (*ptr <= 'M')
                                 *ptr += 13;
                         else
                                 *ptr -= 13;
+			i += _putchar(*ptr);
 
                 }
                 ptr++;
-		i++;
 
         }
 	return(i);

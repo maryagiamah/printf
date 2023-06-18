@@ -9,29 +9,28 @@
  */
 char *convert(unsigned long int num, int base, int lowercase)
 {
-    static char *rep;
-    static char buffer[50];
-    char *ptr;
+	static char *rep;
+	static  char buffer[50];
+	char *ptr;
 
-    rep = (lowercase) ? "0123456789abcdef" : "0123456789ABCDEF";
-    ptr = &buffer[49];
-    *ptr = '\0';
+	rep = (lowercase) ? "0123456789abcdef" : "0123456789ABCDEF";
+	ptr = &buffer[49];
+	*ptr = '\0';
 
-    do {
-        *--ptr = rep[num % base];
-        num /= base;
-    } while (num != 0);
-
+	do {
+        	*--ptr = rep[num % base];
+        	num /= base;
+	} while (num != 0);
     return ptr;
 }
 
 
-int is_digit(char c)
+int is_digit(char  c)
 {
         if (c >= '0' && c <= '9')
                 return (1);
 
-return (0);
+	return (0);
 }
 
 int apply_width_precision_2 (long int n, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar)
@@ -40,28 +39,37 @@ int apply_width_precision_2 (long int n, flags_t *f, int fld_wdth, int prec_sn, 
         int count = 0;
         int padding = ' ';
 
-        if (prec_sn != -1 && prec_sn > dig_len)
-            count += print_padding('0', prec_sn - dig_len);
-        else if (f->zero_flag == 1 && f->dash_flag != 1 && prec_sn == -1)
-            padding = '0';
+	if (prec_sn > 0)
+		f->zero_flag = 0;
+	if (prec_sn > 1 && prec_sn > dig_len)
+		count += print_padding('0', prec_sn - dig_len);
+
+	if (f->zero_flag == 1 && f->dash_flag != 1 && prec_sn > 0)
+		padding = '0';
 
         no_ofchar += count;
-        if (fld_wdth > no_ofchar  && f->dash_flag != 1)
+        if (fld_wdth > no_ofchar && f->dash_flag == 0 && f->zero_flag == 1)
         {
             count += print_padding(padding, fld_wdth - no_ofchar);
             print_number(n);
             return (count);
         }
-        no_ofchar += count;
+	else if (fld_wdth > no_ofchar && f->dash_flag == 0  && f->zero_flag == 0)
+	{
+		count += print_padding(' ', fld_wdth - no_ofchar);
+		print_number(n);
+		return (count);
+	}
         if (fld_wdth > no_ofchar && f->dash_flag == 1)
-            count += print_padding(padding, fld_wdth - no_ofchar);
-        print_number(n);
+	{
+		print_number(n);
+		count += print_padding(padding, fld_wdth - no_ofchar);
+	}
+	if (count == 0)
+		print_number(n);
         return (count);
-
 }
-#include "main.h"
-#include <limits.h>
-#include <stdio.h>
+
 
 /**
  * Initialize flags and mod_f variables.
@@ -80,4 +88,19 @@ void initialize_variables(flags_t *flags, len_mod *mod_f)
     mod_f->j = 0;
     mod_f->z = 0;
     mod_f->t = 0;
+}
+
+int _strlen (char *s)
+{
+	char *ptr = s;
+	int i = 0;
+	while (*ptr)
+	{
+		i++;
+		ptr++;
+
+	}
+	return (i);
+
+
 }
