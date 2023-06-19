@@ -64,7 +64,7 @@ int count_unsigned_digits (unsigned long int n)
  */
 void print_number (long int n)
 {
-	  long int n1 = 0;
+	  unsigned long int n1 = 0;
 
         if (n < 0)
         {
