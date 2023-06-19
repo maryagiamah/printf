@@ -14,26 +14,16 @@
 int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         char *s = va_arg(l, char *);
-        char *ptr = s;
-        int str_len = _strlen(s);
-        int i = 0;
-	(void)f;
+	int count = _strlen(s);
         (void)m;
-        (void)fld_wdth;
 
 	if (!s)
-                return (_puts("(null)"));
-        if (prec_sn > 1  && prec_sn < str_len)
-        {
-                while (i < prec_sn && *ptr != '\0')
-                {
-                        _putchar(*ptr);
-                        i++;
-                }
-                return prec_sn;
-        }
-
-        return (_puts(s));
+	{
+		s = "(null)"
+		count = _strlen(s);
+	}
+	count += apply_width_precision_3(s, &f, fld_wdth, prec_sn, count);
+return (count);
 }
 
 /**
