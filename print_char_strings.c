@@ -20,7 +20,8 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 
 	if (!s)
 	{
-		s = "(null)";
+		char *str = "(null)";
+		s = str;
 		count = strlen(s);
 	}
 	if (prec_sn > 1  && prec_sn < len)
