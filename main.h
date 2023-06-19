@@ -100,7 +100,7 @@ int print_padding(char c, int n);
 int count_signed_digits(long int n);
 int count_unsigned_digits(unsigned long int n);
 void initialize_variables(flags_t *flags, len_mod *mod_f);
-int apply_char(char c, flags_t *f, int fld_wdth, int no_ofchar);
+int apply_char(int c, flags_t *f, int fld_wdth, int no_ofchar);
 
 /* print_unknown_specifier */
 int print_unknown_specifier (char fmt);
