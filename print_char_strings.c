@@ -26,7 +26,7 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 	if (prec_sn > 1  && prec_sn < len)
         {
 		
-		char str[prec_sn + 1];
+		char str[20];
 		if (str)
 		{
 			char *ptr = str;
