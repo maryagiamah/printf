@@ -56,14 +56,13 @@ return (count);
 int print_char (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
 	int c;
-        (void)f;
+	c = va_arg(l, int);
+	count = 1;
         (void)m;
-        (void)fld_wdth;
         (void)prec_sn;
 
-	c = va_arg(l, int);
-        _putchar(c);
-        return (1);
+	count += apply_char(c, f, fld_wdth, count); 
+        return (count);
 }
 
 /**
@@ -82,4 +81,10 @@ int print_n (va_list l, int count)
 
         *ptr = count;
         return (0);
+}
+
+int apply_char(char c, flags_t *f, int fld_wdth, int no_ofchar)
+{
+
+
 }
