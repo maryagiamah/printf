@@ -39,7 +39,7 @@ int apply_width_precision_2 (long int n, flags_t *f, int fld_wdth, int prec_sn, 
         int count = 0;
         int padding = ' ';
 
-	if (prec_sn > 0)
+	if (prec_sn > 1)
 		f->zero_flag = 0;
 	else if (prec_sn == 0 && n == 0)
 		return (_putchar('0'));
