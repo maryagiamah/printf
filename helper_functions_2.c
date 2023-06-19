@@ -104,7 +104,7 @@ int _strlen (char *s)
 
 
 }
-int apply_width_precision_3(char *str, flags_t *f, int fld_wdth, int no_ofchar)
+int apply_str(char *str, flags_t *f, int fld_wdth, int no_ofchar)
 {
 
         int count = 0;
