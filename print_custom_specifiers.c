@@ -124,7 +124,7 @@ int print_rot13 (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                                 *ptr -= 13;
 
                 }
-		ptr++
+		ptr++;
 
         }
 	return(_puts(s));
