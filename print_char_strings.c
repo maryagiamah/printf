@@ -27,8 +27,6 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         {
 		
 		char str[20];
-		if (str)
-		{
 			char *ptr = str;
                 while (i < prec_sn)
                 {
@@ -36,7 +34,6 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                         i++;
                 }
 		*ptr = '\0';
-		}
                 count = prec_sn;
 		s = str;
         }	
