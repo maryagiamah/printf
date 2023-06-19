@@ -27,9 +27,9 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 	if (prec_sn > 1  && prec_sn < len)
         {
 		str = malloc((prec_sn + 1) * sizeof(char));
-		ptr = str;
-		if (ptr)
+		if (str)
 		{
+			ptr = str;
                 while (i < prec_sn)
                 {
 			*ptr++ = *(s + i);
