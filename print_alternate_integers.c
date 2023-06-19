@@ -34,7 +34,7 @@ int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
          	count += _putchar(' ');
 	else if (f->plus == 1)
             	count += _putchar('+');
-	if (f->hash == 1 && str[0] != '\0')
+	if (f->hash == 1 && str[0] != '0')
                 count += _puts("0x");
 
         count += apply_width_precision(str, f, fld_wdth, prec_sn, count);
@@ -76,7 +76,7 @@ int print_hex_big (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         else if (f->plus == 1)
                 count += _putchar('+');
         
-        if (f->hash == 1 && str[0] != '\0')
+        if (f->hash == 1 && str[0] != '0')
                 count += _puts("0X");
 
         count += apply_width_precision(str, f, fld_wdth, prec_sn, count);
@@ -117,7 +117,7 @@ int print_binary (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 count += _putchar(' ');
         else if (f->plus == 1)
                 count += _putchar('+');
-	if (f->hash == 1 && str[0] != '\0')
+	if (f->hash == 1 && str[0] != '0')
                 count += _puts("ob");
         count += apply_width_precision(str, f, fld_wdth, prec_sn, count);
         return count;
