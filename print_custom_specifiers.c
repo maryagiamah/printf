@@ -96,40 +96,32 @@ int print_rev (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
  *
  * Return: number of characters printed
  */
-int print_rot13 (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
+int print_rot13(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
-        char *s = va_arg(l, char *);
-	char *ptr = s;
-        (void)f;
-        (void)m;
-        (void)fld_wdth;
-        (void)prec_sn;
+    char *s = va_arg(l, char *);
+    char *ptr = s;
+    int count = 0;
+    (void)f;
+    (void)m;
+    (void)fld_wdth;
+    (void)prec_sn;
 
-        while (*ptr)
+    while (*ptr)
+    {
+        if ((*ptr >= 'a' && *ptr <= 'm') || (*ptr >= 'A' && *ptr <= 'M'))
         {
-                if (*ptr >= 'a' && *ptr <= 'z')
-                {
-                        if (*ptr <= 'm')
-                                *ptr += 13;
-                        else
-                                *ptr -= 13;
-
-                }
-                else if (*ptr >= 'A' && *ptr <= 'Z')
-                {
-                        if (*ptr <= 'M')
-                                *ptr += 13;
-                        else
-                                *ptr -= 13;
-
-                }
-		ptr++;
-
+            *ptr += 13;
         }
-	return(_puts(s));
+        else if ((*ptr >= 'n' && *ptr <= 'z') || (*ptr >= 'N' && *ptr <= 'Z'))
+        {
+            *ptr -= 13;
+        }
+        count += _putchar(*ptr);
+        ptr++;
+    }
 
+    return count;
 }
-
 /**
  * print_percent - prints a percent symbol
  * @l: va_list arguments from _printf
