@@ -1,5 +1,6 @@
 #include "main.h"
 #include <string.h>
+#include <stddef.h>
 /**
  * print_string - prints a string
  * @l: va_list arguments from _printf
@@ -18,10 +19,10 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         int i = 0;
         (void)m;
 
-	if (!s)
+	if (s == NULL)
 	{
-		char *str = "(null)";
-		s = str;
+		char *empty[]  = "(null)";
+		s = empty;
 		count = strlen(s);
 	}
 	if (prec_sn > 1  && prec_sn < len)
