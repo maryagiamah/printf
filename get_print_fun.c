@@ -12,7 +12,6 @@
  */
 int (*get_print(char s))(va_list, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
-	int (*ptr)(va_list, flags_t *f, len_mod *m, int fld_wdth, int prec_sn) = NULL;
 
         ph func_arr[] = {
                 {'i', print_int},
@@ -39,5 +38,5 @@ int (*get_print(char s))(va_list, flags_t *f, len_mod *m, int fld_wdth, int prec
                 if (func_arr[i].c == s)
                         return (func_arr[i].f);
         }
-        return (ptr);
+        return (NULL);
 }

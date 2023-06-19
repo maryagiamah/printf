@@ -10,7 +10,6 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
 	long int n = 0;
 	int  count = 0;
-	int res = 0;	
 
 	if (m->l == 1)
         	n = va_arg(l, long int);
@@ -28,8 +27,7 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         	count  += _putchar(' ');
     	else if (f->plus == 1 &&  n >= 0)
 		count += _putchar('+');
-		res += count;
-	count += apply_width_precision_2(n, f, fld_wdth, prec_sn, res);
+	count += apply_width_precision_2(n, f, fld_wdth, prec_sn, count);
 	return (count);
 }
 
@@ -57,9 +55,9 @@ int print_unsigned (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn
 	str = convert(u, 10, 1);
 	count = _strlen(str);
 
-	if (f->space == 1 && f->plus == 0 && u >= 0)
+	if (f->space == 1 && f->plus == 0)
 		count += _putchar(' ');
-	else if (f->plus  == 1 && u >= 0)
+	else if (f->plus  == 1)
 		count  += _putchar('+');
 	count += apply_width_precision(str, f,  fld_wdth, prec_sn, count);
     return (count);

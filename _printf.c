@@ -77,7 +77,8 @@ int _printf(const char *format, ...)
                 	fmt_str++;
 	  	}
           	print_func = get_print(*fmt_str);
-          	count +=  (print_func == NULL) ? print_unknown_specifier(*fmt_str) : print_func(var_args, &flags, &mod_f, fld_wdth, prec_sn);
+          	count += (print_func) ? print_func(var_args, &flags, &mod_f, fld_wdth, prec_sn):
+			_printf("%%%c",*fmt_str);
 	 	}
         	else
 		{
