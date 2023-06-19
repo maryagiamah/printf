@@ -104,17 +104,33 @@ int _strlen (char *s)
 
 
 }
-apply_width_precision_3 (char *str, flags_t *f, int fld_wdth, int count)
+apply_width_precision_3 (char *str, flags_t *f, int fld_wdth, int no_ofchar)
 {
 	int len = _strlen(str);
         int count = 0;
         int padding = ' ';
 
-
-
-
-
-
-
+	if (fld_wdth > no_ofchar  && f->dash_flag != 1 && f->zero_flag == 1)
+	{
+		count += print_padding(padding, fld_wdth - no_ofchar);
+		_puts(str);
+		return (count);
+	}
+	if (fld_wdth > no_ofchar && f->dash_flag == 0  && f->zero_flag == 0)
+        {
+		count += print_padding(padding, fld_wdth - no_ofchar);
+		_puts(str);
+                return (count);
+        }
+        if (fld_wdth > no_ofchar  && f->dash_flag == 1)
+	{
+		_puts(str);
+		count += print_padding(padding, fld_wdth - no_ofchar);
+	}
+	if (count == 0)
+	{
+		_puts(str);
+	}	
+        return (count);
 
 }
