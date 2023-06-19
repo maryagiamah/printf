@@ -57,7 +57,7 @@ int print_char (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
 	int c;
 	c = va_arg(l, int);
-	count = 1;
+	int count = 1;
         (void)m;
         (void)prec_sn;
 
