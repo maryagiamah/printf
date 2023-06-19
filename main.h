@@ -1,9 +1,5 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
-
-#include <stdlib.h>
-#include <stdarg.h>
-
 /**
  * struct flags - struct containing all posible  flag characters when a flag specifier is passed to _printf()
  * @plus: flag for the '+' flag character
@@ -104,4 +100,5 @@ void initialize_variables(flags_t *flags, len_mod *mod_f);
 
 /* print_unknown_specifier */
 int print_unknown_specifier (char fmt);
+
 #endif
