@@ -15,6 +15,8 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         char *s = va_arg(l, char *);
 	int count = _strlen(s);
+	char *ptr, *str;
+        int i = 0;
         (void)m;
 
 	if (!s)
@@ -22,7 +24,24 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		s = "(null)"
 		count = _strlen(s);
 	}
-	count += apply_width_precision_3(s, &f, fld_wdth, prec_sn, count);
+	if (prec_sn > 1  && prec_sn < len)
+        {
+		str = malloc((prec_sn + 1) * sizeof(char));
+		ptr = str;
+		if (ptr)
+		{
+                while (i < prec_sn)
+                {
+			*ptr++ = *(s + i);
+                        i++;
+                }
+		*ptr = '\0';
+		}
+                count = prec_sn;
+		s = str;
+        }	
+	count += apply_width_precision_3(s, f, fld_wdth, count);
+	free(str);
 return (count);
 }
 
