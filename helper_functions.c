@@ -83,7 +83,7 @@ void print_number (long int n)
 
 int apply_width_precision (char *str, flags_t *f, int fld_wdth, int prec_sn, int  no_ofchar)
 {
-        int len = _strlen(str);
+        int len = strlen(str);
         int count = 0;
         int padding = ' ';
 
