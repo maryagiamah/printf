@@ -64,17 +64,16 @@ int count_unsigned_digits (unsigned long int n)
  */
 void print_number (long int n)
 {
-	  unsigned long int n1 = 0;
+	unsigned long int n1 = 0;
 
-        if (n < 0)
+        if (n < 0 && n != '\0')
 	{
                 n1 = -n;
-		_putchar('-');
 	}
         else
                 n1 = n;
 
-        if (n1 / 10)
+        if (n1 / 10 && n1 != '\0')
 	{
                 print_number(n1 / 10);
 	}
@@ -89,6 +88,8 @@ int apply_width_precision (char *str, flags_t *f, int fld_wdth, int prec_sn, int
 
 	if (prec_sn > 1)
 		f->zero_flag = 0;
+	if (prec_sn == 0)
+		str  = '\0';
 	if (f->zero_flag == 1 && f->dash_flag != 1)
             padding = '0';
         if (prec_sn > 1 && prec_sn > len)
