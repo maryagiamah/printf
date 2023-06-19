@@ -95,7 +95,7 @@ int print_lu(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn);
 /* helper functions */
 int apply_width_precision_2(long int n, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar);
 int apply_width_precision(char *str, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar);
-apply_width_precision_3 (char *str, flags_t *f, int fld_wdth, int no_ofchar)
+int apply_width_precision_3 (char *str, flags_t *f, int fld_wdth, int no_ofchar)
 void print_number(long int n);
 int print_padding(char c, int n);
 int count_signed_digits(long int n);

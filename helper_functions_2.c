@@ -104,9 +104,9 @@ int _strlen (char *s)
 
 
 }
-apply_width_precision_3 (char *str, flags_t *f, int fld_wdth, int no_ofchar)
+int apply_width_precision_3(char *str, flags_t *f, int fld_wdth, int no_ofchar)
 {
-	int len = _strlen(str);
+
         int count = 0;
         int padding = ' ';
 	
