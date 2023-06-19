@@ -26,7 +26,8 @@ int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-
+	if (num == 0)
+		return (_putchar('0'));
         str = convert(num, 16, 1);
 	count += _strlen (str);
 
@@ -67,7 +68,8 @@ int print_hex_big (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-
+	if (num == 0)
+		return (_putchar('0'));
         str = convert(num, 16, 0);
 	count += _strlen(str);
 
@@ -109,7 +111,8 @@ int print_binary (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-
+	if (num == 0)
+		return (_putchar('0'));
         str = convert(num, 2, 1);
 	count += _strlen(str);
 
@@ -149,7 +152,8 @@ int print_octal (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
-
+	if (num == 0)
+		return (_putchar('0'));
         str = convert(num, 8, 1);
 	count += _strlen(str);
 
