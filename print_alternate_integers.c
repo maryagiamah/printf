@@ -33,7 +33,7 @@ int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		char *ptr = "0";
 		str = ptr;
 	}
-	count += _strlen (str);
+	count += strlen (str);
 
 	if (f->space == 1 && f->plus  == 0)
          	count += _putchar(' ');
@@ -79,7 +79,7 @@ int print_hex_big (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		char *ptr = "0";
 		str = ptr;
 	}
-	count += _strlen(str);
+	count += strlen(str);
 
 	if (f->space == 1 && f->plus  == 0)
                 count += _putchar(' ');
@@ -125,7 +125,7 @@ int print_binary (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		char *ptr = "0";
 		str = ptr;
 	}
-	count += _strlen(str);
+	count += strlen(str);
 
 	if (f->space == 1 && f->plus  == 0)
                 count += _putchar(' ');
@@ -169,7 +169,7 @@ int print_octal (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		char *ptr = "0";
 		str = ptr;
 	}
-	count += _strlen(str);
+	count += strlen(str);
 
 	if (f->plus == 1 && f-> space == 0)
                 count += _putchar('+');
