@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 /**
  * print_int - prints an integer
  * @l: va_list of arguments from _printf
@@ -53,7 +54,7 @@ int print_unsigned (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn
         	u = va_arg(l, unsigned int);
 
 	str = convert(u, 10, 1);
-	count = _strlen(str);
+	count = strlen(str);
 
 	if (f->space == 1 && f->plus == 0)
 		count += _putchar(' ');
