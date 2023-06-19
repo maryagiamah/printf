@@ -67,7 +67,10 @@ void print_number (long int n)
 	  unsigned long int n1 = 0;
 
         if (n < 0)
+	{
                 n1 = -n;
+		_putchar('-');
+	}
         else
                 n1 = n;
 
