@@ -114,7 +114,6 @@ int print_rot13 (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                                 *ptr += 13;
                         else
                                 *ptr -= 13;
-			i += _putchar(*ptr);
 
                 }
                 else if (*ptr >= 'A' && *ptr <= 'Z')
@@ -123,13 +122,12 @@ int print_rot13 (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                                 *ptr += 13;
                         else
                                 *ptr -= 13;
-			i += _putchar(*ptr);
 
                 }
-                ptr++;
+		ptr++
 
         }
-	return(i);
+	return(_puts(s));
 
 }
 
