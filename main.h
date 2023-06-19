@@ -1,5 +1,8 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
+
+#include <stdlib.h>
+#include <stdarg.h>
 /**
  * struct flags - struct containing all posible  flag characters when a flag specifier is passed to _printf()
  * @plus: flag for the '+' flag character
