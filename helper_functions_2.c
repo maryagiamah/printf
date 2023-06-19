@@ -109,7 +109,16 @@ apply_width_precision_3 (char *str, flags_t *f, int fld_wdth, int no_ofchar)
 	int len = _strlen(str);
         int count = 0;
         int padding = ' ';
-
+	
+	if (prec_sn > 1  && prec_sn < len)
+        {
+                while (i < prec_sn && *ptr != '\0')
+                {
+                        _putchar(*ptr);
+                        i++;
+                }
+                no_ofchar = prec_sn;
+        }
 	if (fld_wdth > no_ofchar  && f->dash_flag != 1 && f->zero_flag == 1)
 	{
 		count += print_padding(padding, fld_wdth - no_ofchar);
