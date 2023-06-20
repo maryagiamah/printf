@@ -66,14 +66,16 @@ void print_number (long int n)
 {
 	unsigned long int n1 = 0;
 
-        if (n < 0 && n != '\0')
+	if (n == '\0')
+		return (0);
+        if (n < 0 )
 	{
                 n1 = -n;
 	}
         else
                 n1 = n;
 
-        if (n1 / 10 && n1 != '\0')
+        if (n1 / 10)
 	{
                 print_number(n1 / 10);
 	}
