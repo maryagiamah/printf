@@ -38,10 +38,8 @@ int apply_width_precision_2 (long int n, flags_t *f, int fld_wdth, int prec_sn, 
         int count = 0;
         int padding = ' ';
 
-	if (f->zero_flag == 1 && f->dash_flag != 1 && prec_sn > 0)
+	if (f->zero_flag == 1 && f->dash_flag != 1 && prec_sn > 1)
 		padding = '0';
-
-        no_ofchar += count;
         if (fld_wdth > no_ofchar && f->dash_flag == 0 && f->zero_flag == 1)
         {
             count += print_padding(padding, fld_wdth - no_ofchar);
