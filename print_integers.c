@@ -11,6 +11,7 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
 	long int n = 0;
 	int  count = 0;
+	int sign = 0;
 
 	if (m->l == 1)
         	n = va_arg(l, long int);
@@ -24,8 +25,7 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 	count += count_signed_digits(n);
 	if (n < 0)
 	{
-		count += 1;
-		_putchar ('-');
+		sign = _putchar ('-');
 	}
 	
 	if (prec_sn > 1)
@@ -34,7 +34,7 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		n = '\0';
 	if (prec_sn > 0 && prec_sn > count)
 		count += print_padding('0', prec_sn - count);
-	
+	count += sign;
     	if (f->space == 1 && f->plus == 0  && n >= 0)
         	count  += _putchar(' ');
     	else if (f->plus == 1 &&  n >= 0)
