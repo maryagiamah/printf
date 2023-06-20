@@ -23,7 +23,7 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         	n = va_arg(l, int);
 
 	count += count_signed_digits(n);
-	if (n < 0 && fld_wdth == 0)
+	if (n < 0 && (fld_wdth < 0 || fld_wdth < count))
 	{
 		sign = _putchar ('-');
 	}
