@@ -23,7 +23,18 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 
 	count += count_signed_digits(n);
 	if (n < 0)
+	{
 		count += 1;
+		_putchar ('-');
+	}
+	
+	if (prec_sn > 1)
+		f->zero_flag = 0;
+	if (prec_sn == 0)
+		n = '\0';
+	if (prec_sn > 0 && prec_sn > count)
+		count += print_padding('0', prec_sn - count);
+	
     	if (f->space == 1 && f->plus == 0  && n >= 0)
         	count  += _putchar(' ');
     	else if (f->plus == 1 &&  n >= 0)
