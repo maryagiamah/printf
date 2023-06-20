@@ -35,19 +35,8 @@ int is_digit(char  c)
 
 int apply_width_precision_2 (long int n, flags_t *f, int fld_wdth, int prec_sn, int no_ofchar)
 {
-        int dig_len = count_signed_digits(n);
         int count = 0;
         int padding = ' ';
-
-	if (n < 0)
-		_putchar ('-');
-	
-	if (prec_sn > 1)
-		f->zero_flag = 0;
-	if (prec_sn == 0)
-		n = '\0';
-	if (prec_sn > 1 && prec_sn > dig_len)
-		count += print_padding('0', prec_sn - dig_len);
 
 	if (f->zero_flag == 1 && f->dash_flag != 1 && prec_sn > 0)
 		padding = '0';
