@@ -82,20 +82,8 @@ void print_number (long int n)
 
 int apply_width_precision (char *str, flags_t *f, int fld_wdth, int prec_sn, int  no_ofchar)
 {
-        int len = strlen(str);
         int count = 0;
         int padding = ' ';
-
-	if (prec_sn > 1)
-		f->zero_flag = 0;
-	if (prec_sn == 0)
-		str  = '\0';
-	if (f->zero_flag == 1 && f->dash_flag != 1)
-            padding = '0';
-        if (prec_sn > 1 && prec_sn > len)
-            count += print_padding('0', prec_sn - len);
-
-        no_ofchar += count;
 
         if (fld_wdth > no_ofchar  && f->dash_flag != 1 && f->zero_flag == 1)
 	{
