@@ -67,7 +67,7 @@ int _printf(const char *format, ...)
                     	prec_sn = va_arg(var_args, int);
 		    	fmt_str++;
                 }
-		else
+		else if ((!is_digit(*fmt_str)) && *fmt_str != '*')
 		{
 		   	prec_sn = 0;
 		}
