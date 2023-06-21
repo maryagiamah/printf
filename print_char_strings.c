@@ -15,7 +15,6 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         char *s = va_arg(l, char *);
 	int count = strlen(s);
-	int len = strlen(s);
         int i = 0;
         (void)m;
 
@@ -26,12 +25,16 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		count = strlen(s);
 	}
 	if (prec_sn == 0)
-		*s = '\0';
-	if (prec_sn > 1  && prec_sn < len)
+	{
+		char *ptr = "";
+		s = ptr;
+		count = strlen(s);
+	}
+	if (prec_sn > 1  && prec_sn < count)
         {
 		
 		char str[20];
-			char *ptr = str;
+		char *ptr = str;
                 while (i < prec_sn)
                 {
 			*ptr++ = *(s + i);
