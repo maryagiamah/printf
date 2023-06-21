@@ -67,7 +67,7 @@ void print_number (long int n)
 	unsigned long int n1 = 0;
 
 	if (n == '\0')
-		return (0);
+		return ;
         if (n < 0 )
 	{
                 n1 = -n;
