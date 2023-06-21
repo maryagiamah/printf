@@ -15,7 +15,6 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
         char *s = va_arg(l, char *);
 	int count = strlen(s);
-        int i = 0;
         (void)m;
 
 	if (s == NULL)
