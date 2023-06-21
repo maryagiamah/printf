@@ -26,7 +26,7 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		count = strlen(s);
 	}
 	if (prec_sn == 0)
-		s = '\0';
+		*s = '\0';
 	if (prec_sn > 1  && prec_sn < len)
         {
 		
