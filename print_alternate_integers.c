@@ -28,17 +28,15 @@ int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, unsigned int);
 	
         str = convert(num, 16, 1);
-	if (num == 0)
-	{
-		char *ptr = "0";
-		str = ptr;
-	}
 	count += strlen (str);
 
 	if (prec_sn > 1)
                 f->zero_flag = 0;
-        if (prec_sn == 0 && num == 0)
-                *str  = '\0';
+        if (prec_sn == 0)
+	{
+                char *ptr  = "\0";
+		str = ptr;
+	}
         if (prec_sn > 1 && prec_sn > count)
             count += print_padding('0', prec_sn - count);
 
@@ -81,18 +79,16 @@ int print_hex_big (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = va_arg(l, unsigned int);
 	
         str = convert(num, 16, 0);
-	if (num == 0)
-	{
-		char *ptr = "0";
-		str = ptr;
-	}
 	count += strlen(str);
 
 
 	if (prec_sn > 1)
                 f->zero_flag = 0;
-        if (prec_sn == 0 && num == 0)
-                *str  = '\0';
+        if (prec_sn == 0)
+	{
+                char *ptr  = "\0";
+		str = ptr;
+	}
         if (prec_sn > 1 && prec_sn > count)
             count += print_padding('0', prec_sn - count);
 
@@ -135,17 +131,15 @@ int print_binary (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         else
                 num = va_arg(l, unsigned int);
         str = convert(num, 2, 1);
-	if (num == 0)
-	{
-		char *ptr = "0";
-		str = ptr;
-	}
 	count += strlen(str);
 
 	if (prec_sn > 1)
                 f->zero_flag = 0;
-        if (prec_sn == 0 && num == 0)
-                *str  = '\0';
+        if (prec_sn == 0)
+	{
+                char *ptr  = "\0";
+		str = ptr;
+	}
         if (prec_sn > 1 && prec_sn > count)
             count += print_padding('0', prec_sn - count);
 
@@ -186,17 +180,15 @@ int print_octal (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         else
                 num = va_arg(l, unsigned int);
         str = convert(num, 8, 1);
-	if (num == 0)
-	{
-		char *ptr = "0";
-		str = ptr;
-	}
 	count += strlen(str);
 
 	if (prec_sn > 1)
                 f->zero_flag = 0;
-        if (prec_sn == 0 && num == 0)
-                *str  = '\0';
+	if (prec_sn == 0)
+	{
+                char *ptr  = "\0";
+		str = ptr;
+	}
         if (prec_sn > 1 && prec_sn > count)
             count += print_padding('0', prec_sn - count);
 
