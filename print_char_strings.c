@@ -115,3 +115,18 @@ int apply_char(int c, flags_t *f, int fld_wdth, int no_ofchar)
         return (count);
 
 }
+int zero_precision(int count, int fld_wdth, flags_t *f)
+{
+	if (fld_wdth > 0)
+    {
+        if (f->zero_flag == 1)
+        {
+            count += print_padding('0', fld_wdth - count);
+        }
+        else
+        {
+            count += print_padding(' ', fld_wdth - count);
+        }
+    }
+    return count; 
+}
