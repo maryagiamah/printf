@@ -34,8 +34,9 @@ int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 f->zero_flag = 0;
         if (prec_sn == 0)
 	{
-                char *ptr  = "\0";
+                char *ptr  = "";
 		str = ptr;
+		count = strlen(str);
 	}
         if (prec_sn > 1 && prec_sn > count)
             count += print_padding('0', prec_sn - count);
@@ -86,8 +87,9 @@ int print_hex_big (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 f->zero_flag = 0;
         if (prec_sn == 0)
 	{
-                char *ptr  = "\0";
+                char *ptr  = "";
 		str = ptr;
+		count = strlen(str);
 	}
         if (prec_sn > 1 && prec_sn > count)
             count += print_padding('0', prec_sn - count);
@@ -137,8 +139,9 @@ int print_binary (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 f->zero_flag = 0;
         if (prec_sn == 0)
 	{
-                char *ptr  = "\0";
+                char *ptr  = "";
 		str = ptr;
+		count = strlen(str);
 	}
         if (prec_sn > 1 && prec_sn > count)
             count += print_padding('0', prec_sn - count);
@@ -186,8 +189,9 @@ int print_octal (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 f->zero_flag = 0;
 	if (prec_sn == 0)
 	{
-                char *ptr  = "\0";
+                char *ptr  = "";
 		str = ptr;
+		count = strlen(str);
 	}
         if (prec_sn > 1 && prec_sn > count)
             count += print_padding('0', prec_sn - count);
