@@ -28,21 +28,20 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 	{
 		char *ptr = "";
 		s = ptr;
-		count = strlen(s);
+		count = 0;
 	}
 	if (prec_sn > 1  && prec_sn < count)
         {
 		
 		char str[20];
-		char *ptr = str;
                 while (i < prec_sn)
                 {
-			*ptr++ = *(s + i);
+			str[i] = s[i];
                         i++;
                 }
-		*ptr = '\0';
-                count = prec_sn;
+		s[i] = '\0';
 		s = str;
+		count = prec_sn;
         }	
 	count += apply_str(s, f, fld_wdth, count);
 return (count);
