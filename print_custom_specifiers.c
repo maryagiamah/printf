@@ -110,11 +110,11 @@ int print_rot13(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
     {
         if ((*ptr >= 'a' && *ptr <= 'm') || (*ptr >= 'A' && *ptr <= 'M'))
         {
-            *ptr += 13;
+            (*ptr) += 13;
         }
         else if ((*ptr >= 'n' && *ptr <= 'z') || (*ptr >= 'N' && *ptr <= 'Z'))
         {
-            *ptr -= 13;
+            (*ptr) -= 13;
         }
         count += _putchar(*ptr);
         ptr++;
