@@ -16,10 +16,7 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
         char *s = va_arg(l, char *);
 	int count = strlen(s);
         (void)m;
-
-	if (prec_sn == 1)
-		prec_sn = 0;
-	if (s == NULL)
+	if (!s)
 	{
 		char *str  = "(null)";
 		s = str;
@@ -31,7 +28,7 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		count = zero_precision(count, fld_wdth, f);
 		return count;
 	}
-	if (prec_sn < count)
+	if (pre_csn > 1 && prec_sn < count)
         {
 		
 		s[prec_sn] = '\0';
