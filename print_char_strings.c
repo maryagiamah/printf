@@ -16,7 +16,7 @@ int print_string (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 	int count = strlen(s);
         (void)m;
 	if (!s)
-                return (_puts("(null)"));
+                return (0);
 	if (prec_sn == 0)
 	{
 		count = 0;
