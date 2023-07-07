@@ -34,13 +34,15 @@ int _putchar (char c)
  */
 int _puts(char *str)
 {
-        register int i = 0;
-	char *ptr = str;
+        int i = 0;
+        char *ptr = str;
 
-	while (*ptr)
-	{
-		_putchar(*ptr++);
-		i++;
-	}
-	return (i);
+        while (*ptr != '\0')
+        {
+            _putchar(*ptr);
+            i++;
+            ptr++;
+        }
+        return i;
 }
+
