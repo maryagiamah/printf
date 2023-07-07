@@ -106,27 +106,30 @@ int print_rot13(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
     (void)fld_wdth;
     (void)prec_sn;
 
-    while (*ptr)
-    {
-        if ((*ptr >= 'a' && *ptr <= 'm') || (*ptr >= 'A' && *ptr <= 'M'))
+     while (*ptr)
 	{
-	    *ptr = *ptr + 13;
-            count += _putchar(*ptr);
-	    ptr++;
-	    continue;
-        }
-        else if ((*ptr >= 'n' && *ptr <= 'z') || (*ptr >= 'N' && *ptr <= 'Z'))
-        {
-	    *ptr = *ptr - 13;
-            count += _putchar(*ptr);
-	    ptr++;
-	    continue;
-        }
-        count += _putchar(*ptr);
-        ptr++;
-    }
+        	 if (*ptr >= 'a' && *ptr <= 'z')
+                {
+                        if (*ptr <= 'm')
+                                *ptr += 13;
+                        else
+                                *ptr -= 13;
 
-    return count;
+                }
+
+                if (*ptr >= 'A' && *ptr <= 'Z')
+                {
+                        if (*ptr <= 'M')
+                                *ptr += 13;
+                        else
+                                *ptr -= 13;
+
+                }
+                ptr++;
+
+        }
+
+    return (_puts(s));
 }
 /**
  * print_percent - prints a percent symbol
