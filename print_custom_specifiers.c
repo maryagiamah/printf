@@ -100,7 +100,6 @@ int print_rot13(va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 {
     char *s = va_arg(l, char *);
     char *ptr = s;
-    int count = 0;
     (void)f;
     (void)m;
     (void)fld_wdth;
