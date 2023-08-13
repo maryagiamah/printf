@@ -68,7 +68,7 @@ int _printf(const char *format, ...)
 		    	fmt_str++;
                 }
 		else
-		   	prec_sn = 1;
+		   	prec_sn = 0;
             	}
           	while (get_mod(*fmt_str, &mod_f))
 	  	{
