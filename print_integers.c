@@ -28,7 +28,7 @@ int print_int (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
 		sign = _putchar ('-');
 	}
 	
-	if (prec_sn > 1)
+	if (prec_sn > 0)
 		f->zero_flag = 0;
 	if (prec_sn == 0)
 	{
