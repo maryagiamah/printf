@@ -68,8 +68,10 @@ int _printf(const char *format, ...)
 		    	fmt_str++;
                 }
 		else
-		   	prec_sn = 0;
+		{
+		   	prec_sn = 1;
             	}
+		}
           	while (get_mod(*fmt_str, &mod_f))
 	  	{
                 	fmt_str++;
