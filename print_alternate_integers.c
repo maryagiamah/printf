@@ -1,5 +1,6 @@
 #include "main.h"
 #include <string.h>
+
 /**
  * print_hex - prints a number in hexadecimal base, in lowercase
  * @l: the va_list containing the number to print
@@ -22,8 +23,6 @@ int print_hex (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = (unsigned short)va_arg(l, unsigned int);
         else if (m->hh == 1)
                 num = (unsigned char)va_arg(l, unsigned int);
-        else if (m->z == 1)
-                num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
 	
@@ -74,8 +73,6 @@ int print_hex_big (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = (unsigned short)va_arg(l, unsigned int);
         else if (m->hh == 1)
                 num = (unsigned char)va_arg(l, unsigned int);
-        else if (m->z == 1)
-                num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
 	
@@ -128,8 +125,6 @@ int print_binary (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = (unsigned short)va_arg(l, unsigned int);
         else if (m->hh == 1)
                 num = (unsigned char)va_arg(l, unsigned int);
-        else if (m->z == 1)
-                num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
         str = convert(num, 2, 1);
@@ -178,8 +173,6 @@ int print_octal (va_list l, flags_t *f, len_mod *m, int fld_wdth, int prec_sn)
                 num = (unsigned short)va_arg(l, unsigned int);
         else if (m->hh == 1)
                 num = (unsigned char)va_arg(l, unsigned int);
-        else if (m->z == 1)
-                num = va_arg(l, size_t);
         else
                 num = va_arg(l, unsigned int);
         str = convert(num, 8, 1);
