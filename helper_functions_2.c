@@ -38,23 +38,21 @@ int apply_width_precision_2 (long int n, flags_t *f, int fld_wdth, int prec_sn, 
         int count = 0;
         int padding = ' ';
 
-	if (f->zero_flag == 1 && f->dash_flag != 1 && prec_sn > 1)
-		padding = '0';
 	if (fld_wdth > 0 && n < 0 && (f->zero_flag || f->dash_flag))
 		count += _putchar('-');
 	else if (n < 0)
 		no_ofchar++;
 	
 	no_ofchar += count;
-        if (fld_wdth > no_ofchar && f->dash_flag == 0 && f->zero_flag == 1)
+        if (fld_wdth > no_ofchar && f->dash_flag != 1 && f->zero_flag == 1)
         {
-            count += print_padding(padding, fld_wdth - no_ofchar);
+            count += print_padding('0', fld_wdth - no_ofchar);
             print_number(n);
             return (count);
         }
 	else if (fld_wdth > no_ofchar && f->dash_flag == 0  && f->zero_flag == 0)
 	{
-		count += print_padding(' ', fld_wdth - no_ofchar);
+		count += print_padding(padding, fld_wdth - no_ofchar);
 		if (n < 0)
 			count += _putchar('-');
 		print_number(n);
@@ -112,7 +110,7 @@ int apply_str(char *str, flags_t *f, int fld_wdth, int no_ofchar)
 	
 	if (fld_wdth > no_ofchar  && f->dash_flag != 1 && f->zero_flag == 1)
 	{
-		count += print_padding(padding, fld_wdth - no_ofchar);
+		count += print_padding('0', fld_wdth - no_ofchar);
 		_puts(str);
 		return (count);
 	}
